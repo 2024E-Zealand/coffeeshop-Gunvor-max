@@ -8,8 +8,11 @@ namespace CoffeeShopConsoleAppNet60
 {
     public class Latte : Coffee, IMilk
     {
-        public Latte(int discount, string blend) : base(discount, blend)
+        public IMilk.MilkVariants MilkVariants { get; set; }
+
+        public Latte(int discount, string blend, IMilk.MilkVariants milkVariants) : base(discount, blend)
         {
+            MilkVariants = milkVariants;
         }
 
         public int mlMilk()

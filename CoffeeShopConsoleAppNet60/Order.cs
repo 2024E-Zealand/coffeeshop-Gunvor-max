@@ -15,7 +15,7 @@ namespace CoffeeShopConsoleAppNet60
         public string CustomerName { get; set; }
         public bool TakeAway { get; set; }
         public int TableId { get; set; }
-        List<Coffee> CoffeeOrder {  get; set; } = new List<Coffee>();
+        public List<Coffee> CoffeeOrder {  get; set; } = new List<Coffee>();
 
         public Order(Guid orderId, string baristaName, string customerName, int tableId, List<Coffee> coffeeOrder)
         {
@@ -41,7 +41,7 @@ namespace CoffeeShopConsoleAppNet60
             double totalPrice = 0;
             foreach (var coffee in CoffeeOrder)
             {
-                totalPrice =+ coffee.Price();
+                totalPrice += coffee.Price();
             }
             return totalPrice;
         }
@@ -56,7 +56,7 @@ namespace CoffeeShopConsoleAppNet60
             double totalDiscount = 0;
             foreach (var coffee in CoffeeOrder)
             {
-                totalDiscount =+ coffee.Discount;
+                totalDiscount += coffee.Discount;
             }
             return totalDiscount;
         }
@@ -66,9 +66,23 @@ namespace CoffeeShopConsoleAppNet60
             string print = string.Empty;
             foreach (var coffee in CoffeeOrder)
             {
-                print += ($"{coffee.GetType().Name} {coffee.Strength()} {coffee.Price()} kr. - Blend {coffee.Blend}\b");
+                print += ($"{coffee.GetType().Name} {coffee.Strength()} {coffee.Price()} kr. - Blend {coffee.Blend} ");
+                switch (coffee)
+                {
+                    case Latte latte:
+                        print += $"{latte.MilkVariants} ";
+                        break;
+                    case Cortado cortado:
+                        print += $"{cortado.MilkVariants} ";
+                        break;
+                    case FlatWhite flatWhite:
+                        print += $"{flatWhite.MilkVariants} ";
+                        break;
+                    default:
+                        break;
+                }
             }
-            return print;
+                return print;
         }
 
         public override string ToString()

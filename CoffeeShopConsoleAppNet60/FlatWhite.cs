@@ -8,8 +8,10 @@ namespace CoffeeShopConsoleAppNet60
 {
     public class FlatWhite : Coffee, IMilk
     {
-        public FlatWhite(int discount, string blend) : base(discount, blend)
+        public IMilk.MilkVariants MilkVariants { get; set; }
+        public FlatWhite(int discount, string blend, IMilk.MilkVariants milkVariants) : base(discount, blend)
         {
+            MilkVariants = milkVariants;
         }
 
         public override CoffeeStrength Strength()
