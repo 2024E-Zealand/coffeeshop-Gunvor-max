@@ -39,8 +39,8 @@ Console.WriteLine("\b");
 Order order1 = new Order(Guid.NewGuid(), "Jens", "Anders", true, 
     new List<Coffee> 
     {
-        new Latte(0,"Bekele - Early access", IMilk.MilkVariants.Havredrik),
-        new Cortado(0, "Bekele - Early access", IMilk.MilkVariants.Minimælk)
+        new Latte(4,"Bekele - Early access", IMilk.MilkVariants.Havredrik),
+        new Cortado(4, "Bekele - Early access", IMilk.MilkVariants.Minimælk)
     });
 
 Order order2 = new Order(Guid.NewGuid(), "Jens", "Tine", true,
@@ -55,6 +55,7 @@ Order order2 = new Order(Guid.NewGuid(), "Jens", "Tine", true,
 Console.WriteLine("Order");
 Console.WriteLine(order1);
 Console.WriteLine(order1.TotalPrice());
+Console.WriteLine(order1.TotalDiscount());
 
 Console.WriteLine("--------- Ordersystem");
 OrderSystem orderlist = new OrderSystem();
